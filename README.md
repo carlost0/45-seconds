@@ -29,8 +29,8 @@ the game depends on SDL2, SDL2_mixer and aschii, but they are all included in th
 
 ### title screen
 
-[title screen](https://img.itch.zone/aW1hZ2UvNDgyMTIzOC8yODc0ODMzNS5wbmc=/original/fqSEoW.png "title screen")
+![title screen](https://img.itch.zone/aW1hZ2UvNDgyMTIzOC8yODc0ODMzNS5wbmc=/original/fqSEoW.png "title screen")
 
 ### gameplay
 
-[gameplay](https://img.itch.zone/aW1nLzI4NzQ3ODgxLnBuZw==/original/urN5F1.png "gameplay")
+![gameplay](https://img.itch.zone/aW1nLzI4NzQ3ODgxLnBuZw==/original/urN5F1.png "gameplay")
