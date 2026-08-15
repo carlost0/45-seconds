@@ -1,0 +1,105 @@
+#ifndef UTILS_H_
+#define UTILS_H_
+
+#include <stdbool.h>
+
+typedef enum{
+    success,
+    error,
+} error_e;
+
+typedef struct {
+    unsigned char r;
+    unsigned char g;
+    unsigned char b;
+} color_t;
+
+typedef struct {
+    unsigned int w, h;
+} box_t;
+
+typedef struct {
+    unsigned int x, y;
+} point_t;
+
+typedef struct {
+    double x, y;
+} vector2_t;
+
+typedef struct {
+    color_t *      colors;
+    char *         screen;
+    box_t          size;
+} scene_t;
+
+typedef struct {
+    box_t         size;
+    point_t       pos;
+    color_t       color;
+    char          sprite; // the object will be drawn with that character
+} rectangle_t;
+
+typedef struct {
+    box_t         size;
+    point_t       pos;
+    color_t       color;
+    char         *str; // the object will be drawn with that character
+    int len;
+} rectangle_str_t;
+
+typedef struct {
+    point_t       pos;
+    color_t       color;
+    unsigned int  radius;
+    char          sprite; // the object will be drawn with that character
+} circle_t;
+
+typedef struct {
+    point_t       p1; // first point
+    point_t       p2; // second point
+    color_t       color;
+    char          sprite; // the object will be drawn with that character
+} line_t;
+
+typedef struct {
+    point_t       pos;
+    char *        str;
+    color_t       color;
+} text_t;
+
+/* no longer supported
+typedef struct {
+    char *        sprite;
+    point_t       pos;
+    color_t       color;
+    box_t         size;
+} img_object_t;
+*/
+
+
+error_e init_scene(scene_t *scene);                                            // initializes specified scene
+error_e clear_scene(scene_t *scene);                                           // clears specified scene
+error_e print_scene(scene_t *scene);                                           // prints specified scene to stdout, enabling random makes it print randomized characters instead of the specified ones in scene.screen
+void    clear_screen();
+
+error_e draw_screen_borders(scene_t *scene, color_t color);                    // draws cool borders to the specified scene
+error_e draw_rectangle(scene_t *scene, rectangle_t rect, bool rand);                      // draws a rectangle to the specified scene
+error_e draw_rectangle_str(scene_t *scene, rectangle_str_t rect);                      // draws a rectangle to the specified scene
+error_e draw_text_horizontal(scene_t *scene, text_t text);                     // draws text horizonally to the specified scene
+error_e draw_text_vertical(scene_t *scene, text_t text);                       // draws text vertically to the specified scene
+error_e draw_line(scene_t *scene, line_t line);                                // draws a line to scpecified scene
+error_e draw_point(scene_t *scene, point_t pos, char sprite, color_t color);   // draws sprite to the specified location on the specified scene
+error_e draw_circle(scene_t *scene, circle_t circle);                          //draws a circle to the specified scene
+
+/* no longer supported
+void draw_img(scene_t *scene, img_object_t img);                               // draws an ascii image to specified scene
+void img_to_ascii(char * img_path, img_object_t * img);                        // converts bitmap image to a string
+*/
+
+int check_collision(rectangle_t box1, rectangle_t box2);                       // uses aabb to check collision between two boxes
+point_t add_points(point_t p1, point_t p2);                                    // adds two points together: p1.x + p2.x; p1.y + p2.y
+void delay(unsigned int ms);                                                   // delays specified time in millisecconds
+
+extern char ascii_chars[];
+#endif
+
